@@ -21,4 +21,6 @@ from app01 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^publishing_list/$', views.publishing_list),
+    url(r'^edit_publishing/$', views.edit_publishing),
+    url(r'^book_list/$',views.book_list),
 ]

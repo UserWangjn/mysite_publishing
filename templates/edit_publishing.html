@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑出版社名称页面</title>
+</head>
+<body>
+<form action="/edit_publishing/?id={{ publishing_obj.id }}" method="post">
+    <input type="text" value="{{ publishing_obj.name }}" name="new_name">
+    <input type="submit">
+</form>
+</body>
+</html>

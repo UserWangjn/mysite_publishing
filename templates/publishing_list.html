@@ -5,18 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-<table border="1px solid">
+<table border="1">
     <thead>
     <tr>
-        <td>序号</td>
-        <td>出版社</td>
+        <th>序号</th>
+        <th>出版社ID</th>
+        <th>出版社</th>
+        <th>操作</th>
     </tr>
     </thead>
     <tbody>
     {% for i in ret %}
         <tr>
+            <td>{{ forloop.counter }}</td>
             <td>{{ i.id }}</td>
             <td>{{ i.name }}</td>
+            <td>
+                <a href="/edit_publishing/?id={{ i.id }}">编辑</a>
+            </td>
         </tr>
     {% endfor %}
 

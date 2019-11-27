@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>书籍列表页面</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>书籍ID</th>
+            <th>书籍名称</th>
+            <th>出版社名称</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books_obj %}
+            <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.publishing.name }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

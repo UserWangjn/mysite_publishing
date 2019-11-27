@@ -8,3 +8,8 @@ class Publishing(models.Model):
 
     def __str__(self):
         return self.name
+
+class Book(models.Model):
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=32)
+    publishing = models.ForeignKey(to='Publishing',on_delete=models.CASCADE)
