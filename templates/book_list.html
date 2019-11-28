@@ -5,6 +5,7 @@
     <title>书籍列表页面</title>
 </head>
 <body>
+<h1><a href="/add_book/">添加书籍</a></h1>
 <table border="1">
     <thead>
         <tr>
@@ -12,6 +13,7 @@
             <th>书籍ID</th>
             <th>书籍名称</th>
             <th>出版社名称</th>
+            <th>操作</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +23,10 @@
             <td>{{ book.id }}</td>
             <td>{{ book.title }}</td>
             <td>{{ book.publishing.name }}</td>
+            <td>
+                <a href="/edit_book/?id={{ book.id }}">编辑</a>
+                <a href="/delete_book/?id={{ book.id }}">删除</a>
+            </td>
             </tr>
         {% endfor %}
     </tbody>

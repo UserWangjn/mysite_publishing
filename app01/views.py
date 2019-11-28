@@ -1,5 +1,6 @@
-from django.shortcuts import render,HttpResponse,redirect
-from app01.models import Publishing,Book
+from django.shortcuts import render, HttpResponse, redirect
+from app01.models import Publishing, Book
+
 
 # Create your views here.
 
@@ -7,13 +8,14 @@ def publishing_list(request):
     ret = Publishing.objects.all()
     # print(ret)
 
-    return render(request,'publishing_list.html',{'ret':ret})
+    return render(request, 'publishing_list.html', {'ret': ret})
+
 
 def edit_publishing(request):
     # print('edit_publishing request:',request)
     # 1.获得用户需要编辑的出版社ID
     edit_id = request.GET.get('id')
-    print('edit_id:',edit_id)
+    print('edit_id:', edit_id)
     # 2.在数据库中查到该ID的出版社对象
     publishing_obj = Publishing.objects.filter(id=edit_id).first()
     # publishing_obj = Publishing.objects.get(id=edit_id)
@@ -21,7 +23,7 @@ def edit_publishing(request):
     if request.method == 'POST':
         # 获得用户页面编辑的新出版社名称
         new_name = request.POST.get('new_name')
-        print('new_name:',new_name)
+        print('new_name:', new_name)
         # 把新出版社名称赋值给数据库对象Publishing表name字段
         publishing_obj.name = new_name
         # print('publishing_obj[0].name:',publishing_obj[0].name)
@@ -30,9 +32,46 @@ def edit_publishing(request):
         return redirect('/publishing_list/')
     # 3.把出版社对象返回到HTML页面
     # return render(request,'edit_publishing.html',{'publishing_obj':publishing_obj[0],'publishing_obj':publishing_obj[0]})
-    return render(request,'edit_publishing.html',{'publishing_obj':publishing_obj})
+    return render(request, 'edit_publishing.html', {'publishing_obj': publishing_obj})
+
 
 def book_list(request):
     # 1.从数据库中查询书籍列表
     book_list_obj = Book.objects.all()
-    return render(request,'book_list.html',{'books_obj':book_list_obj})
+    # return render(request, 'book_list.html', {'books_obj': book_list_obj})
+    return render(request, 'book_list2.html')
+
+
+def add_book(request):
+    # 1.从数据库查询所有出版社
+    publishing_list = Publishing.objects.all()
+    if request.method == 'POST':
+        book_name = request.POST.get('book_name')
+        new_publishing_id = request.POST.get('publishing_id')
+        Book.objects.create(title=book_name, publishing_id=new_publishing_id)
+        return redirect('/book_list/')
+    return render(request, 'add_book.html', {'publishing_list': publishing_list})
+
+
+def edit_book(request):
+    # 1.获得要编辑书籍名称，并回显到编辑页面
+    book_id = request.GET.get('id')
+    old_book_obj = Book.objects.get(id=book_id)
+    if request.method == 'POST':
+        new_book_title = request.POST.get('new_book_title')
+        new_publishin_id = request.POST.get('publishing_id')
+        old_book_obj.title = new_book_title
+        old_book_obj.publishing_id = new_publishin_id
+        old_book_obj.save()
+        return redirect('/book_list/')
+    publishing_list_obj = Publishing.objects.all()
+    return render(request,'edit_book.html',{'publishing_list_obj':publishing_list_obj,'old_book_obj':old_book_obj})
+
+
+def delete_book(request):
+    # 1.获取要删除的书籍ID
+    delete_id = request.GET.get('id')
+    # 2.去数据库删除此ID
+    Book.objects.get(id=delete_id).delete()
+    # 3.返回删除成功页面
+    return render(request,'delete_success.html')

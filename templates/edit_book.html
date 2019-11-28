@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑书籍页面</title>
+</head>
+<body>
+<form action="" method="post">
+    <input type="text" value={{ old_book_obj.title }} name="new_book_title">
+    <select name="publishing_id">
+        {% for publishing_obj in publishing_list_obj %}
+            {% if old_book_obj.publishing == publishing_obj %}
+                <option selected value={{ publishing_obj.id }}>{{ publishing_obj.name }}</option>
+            {% else %}
+                <option value={{ publishing_obj.id }}>{{ publishing_obj.name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <input type="submit">
+</form>
+</body>
+</html>
