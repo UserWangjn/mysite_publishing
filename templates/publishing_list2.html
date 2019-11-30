@@ -85,7 +85,7 @@
                         </div><!-- /.col-lg-6 -->
                         <!--输入框结束-->
                         <!--添加按钮开始-->
-                        <a href="/add_book/" class="btn btn-success pull-right">添加</a>
+                        <a href="/add_publishing/" class="btn btn-success pull-right">添加出版社</a>
                         <!--添加按钮结束-->
                     </div>
 
@@ -94,22 +94,20 @@
                         <thead>
                         <tr>
                             <th style="text-align: center;">序号</th>
-                            <th style="text-align: center;">书籍ID</th>
-                            <th style="text-align: center;">书籍名称</th>
-                            <th style="text-align: center;">出版社名称</th>
+                            <th style="text-align: center;">出版社ID</th>
+                            <th style="text-align: center;">出版社</th>
                             <th style="text-align: center;">操作</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for book in books_obj %}
+                        {% for i in ret %}
                             <tr style="text-align: center;">
                                 <td>{{ forloop.counter }}</td>
-                                <td>{{ book.id }}</td>
-                                <td>{{ book.title }}</td>
-                                <td>{{ book.publishing.name }}</td>
+                                <td>{{ i.id }}</td>
+                                <td>{{ i.name }}</td>
                                 <td>
-                                    <a class="btn btn-info" href="/edit_book/?id={{ book.id }}">编辑</a>
-                                    <a class="btn btn-danger" href="/delete_book/?id={{ book.id }}">删除</a>
+                                    <a class="btn btn-info"  href="/edit_publishing/?id={{ i.id }}">编辑</a>
+                                    <a class="btn btn-danger"  href="/delete_publishing/?id={{ i.id }}">删除</a>
                                 </td>
                             </tr>
                         {% endfor %}

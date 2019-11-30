@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<a href="/add_publishing/">添加出版社</a>
 <table border="1">
     <thead>
     <tr>
@@ -22,6 +23,7 @@
             <td>{{ i.name }}</td>
             <td>
                 <a href="/edit_publishing/?id={{ i.id }}">编辑</a>
+                <a href="/delete_publishing/?id={{ i.id }}">删除</a>
             </td>
         </tr>
     {% endfor %}

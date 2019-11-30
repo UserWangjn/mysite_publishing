@@ -84,11 +84,11 @@ WSGI_APPLICATION = 'mysite_publishing.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'publishing',
+        'NAME': 'mysite_publishing',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': '123',
+        'PASSWORD': '12345678',
     }
 }
 
@@ -134,9 +134,9 @@ USE_TZ = True
 #     os.path.join(BASE_DIR,'static'),
 # ]
 
-# ¾²Ì¬ÎÄ¼şÏà¹Ø
+# é™æ€æ–‡ä»¶ç›¸å…³
 STATIC_URL = '/static/'
-# ¾²Ì¬ÎÄ¼şµÄÊµ¼Ê´æ·ÅÄ¿Â¼
+# é™æ€æ–‡ä»¶çš„å®é™…å­˜æ”¾ç›®å½•
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]

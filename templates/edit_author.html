@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>编辑作者页面</title>
+</head>
+<body>
+<form action="" method="post">
+    <input type="text" name="author_name" value={{ author_obj.name }}>
+    <select name="books" multiple>
+        {% for book_obj in book_list_obj %}
+            {% if book_obj in author_obj.books.all %}
+                <option selected value={{ book_obj.id }}>{{ book_obj.title }}</option>
+            {% else %}
+                <option value={{ book_obj.id }}>{{ book_obj.title }}</option>
+            {% endif %}
+        {% endfor %}
+
+    </select>
+    <input type="submit" value="保存">
+</form>
+</body>
+</html>

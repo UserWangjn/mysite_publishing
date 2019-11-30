@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>添加作者页面</title>
+</head>
+<body>
+<form action="" method="post">
+    作者名字：<input type="text" name="author_name">
+    书籍名称：<select name="book_ids" multiple>
+        {% for book_obj in book_list_obj %}
+            <option value={{ book_obj.id }}>{{ book_obj.title }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="保存">
+</form>
+</body>
+</html>

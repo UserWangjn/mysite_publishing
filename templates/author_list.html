@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>作者列表页面</title>
+</head>
+<body>
+<a href="/add_author/">添加作者</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>作者ID</th>
+        <th>作者名字</th>
+        <th>作品</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for author in author_list %}
+        <tr style="text-align: center">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ author.id }}</td>
+            <td>{{ author.name }}</td>
+            <td>
+                {% for book in author.books.all %}
+                    {% if forloop.last %}
+                        《{{ book.title }}》
+                    {% else %}
+                        《{{ book.title }}》,
+                    {% endif %}
+                {% empty %}
+                    该作者没有作品
+                {% endfor %}
+            </td>
+            <td>
+                <a href="/delete_author/?shanchu={{ author.id }}">删除</a>
+                <a href="/edit_author/?bianji={{ author.id }}">编辑</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
