@@ -8,7 +8,7 @@ def publishing_list(request):
     ret = Publishing.objects.all()
     # print(ret)
 
-    return render(request, 'publishing_list2.html', {'ret': ret})
+    return render(request, 'list/publishing_list.html', {'ret': ret})
 
 
 # 添加出版社
@@ -60,7 +60,7 @@ def book_list(request):
     # 1.从数据库中查询书籍列表
     book_list_obj = Book.objects.all()
     # return render(request, 'book_list.html', {'books_obj': book_list_obj})
-    return render(request, 'book_list2.html', {'books_obj': book_list_obj})
+    return render(request, 'list/book_list.html', {'books_obj': book_list_obj})
 
 
 # 添加书籍
@@ -107,7 +107,7 @@ def author_list(request):
     # for author in author_data:
     #     print(author.books.all())
 
-    return render(request,'author_list.html',{'author_list':author_data})
+    return render(request,'list/author_list.html',{'author_list':author_data})
 
 
 # 添加作者
