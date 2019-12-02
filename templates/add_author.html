@@ -7,12 +7,13 @@
 </head>
 <body>
 <form action="" method="post">
+    {% csrf_token %}
     作者名字：<input type="text" name="author_name">
     书籍名称：<select name="book_ids" multiple>
-        {% for book_obj in book_list_obj %}
-            <option value={{ book_obj.id }}>{{ book_obj.title }}</option>
-        {% endfor %}
-    </select>
+    {% for book_obj in book_list_obj %}
+        <option value={{ book_obj.id }}>{{ book_obj.title }}</option>
+    {% endfor %}
+</select>
     <input type="submit" value="保存">
 </form>
 </body>
