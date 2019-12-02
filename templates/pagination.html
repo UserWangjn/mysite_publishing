@@ -1,0 +1,27 @@
+<!--分页开始-->
+<nav aria-label="Page navigation" class="pull-right">
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% for current in total %}
+            {% if current == current_num %}
+                <li class="active"><a href="#">{{ current }}</a></li>
+            {% else %}
+                <li><a href="#">{{ current }}</a></li>
+            {% endif %}
+
+        {% endfor %}
+
+
+
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<!--分页结束-->
