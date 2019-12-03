@@ -14,15 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,re_path
 from django.conf.urls import url
 from app01 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^publishing_list/$', views.publishing_list),
-    url(r'^add_publishing/$', views.add_publishing),
-    url(r'^edit_publishing/$', views.edit_publishing),
+    url(r'^publishing_list/$', views.publishing_list),  # r是正则表达式中不转义的意思
+    # url(r'^add_publishing/$', views.add_publishing),
+    # 在django1.1中用url，在django2.0中用path或re_path，其中re_path的用法和1.1中的url是一样的
+    re_path(r'^add_publishing/$', views.AddPublishing.as_view()),
+    re_path(r'^edit_publishing/$', views.edit_publishing),
     url(r'^delete_publishing/$', views.delete_publishing),
     url(r'^book_list/$',views.book_list),
     url(r'^add_book/$',views.add_book),

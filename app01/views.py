@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from app01.models import Publishing, Book,Author
+from django.views import View
 
 
 # Create your views here.
@@ -142,3 +143,16 @@ def edit_author(req):
     return render(req,
                   'edit_author.html',
                   {'author_obj':old_author_obj,'book_list_obj':book_list_obj})
+
+
+class AddPublishing(View):
+
+    def get(self,request):
+        print(self.request)
+        return render(self.request,'add_publishing2.html')
+
+    def post(self,request):
+        print('post')
+        publishing_name = request.POST.get('publishingName')
+        Publishing.objects.create(name=publishing_name)
+        return redirect('/publishing_list/')

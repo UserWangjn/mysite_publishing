@@ -16,6 +16,7 @@
             <!--页头结束-->
             <!--表单开始-->
             <form class="form-horizontal" action="" method="post">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="bookName" class="col-sm-4 control-label">出版社名称</label>
                     <div class="col-sm-8">

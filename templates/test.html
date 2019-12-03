@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>与前端存在交互的容错方法</title>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+    function diag() {
+
+        var str = prompt("你觉得林志玲美吗？");
+
+        if (str) {
+
+            alert("您刚输入的是:" + str)
+
+        }
+
+    }
+
+</script>
+
+<p>
+
+    <input type="submit" value="Sumit" name="Su1" onclick="diag()"/>
+
+</p>
+
+</body>
+
+</html>
