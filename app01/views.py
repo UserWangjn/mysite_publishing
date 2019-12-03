@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from app01.models import Publishing, Book,Author
 from django.views import View
+from django.urls import reverse
 
 
 # Create your views here.
@@ -17,7 +18,8 @@ def add_publishing(request):
     if request.method == 'POST':
         publishing_name = request.POST.get('publishingName')
         Publishing.objects.create(name=publishing_name)
-        return redirect('/publishing_list/')
+        # return redirect('/publishing_list/')
+        return redirect(reverse('publishing_list'))
     return render(request,'add_publishing2.html')
 
 
@@ -47,13 +49,14 @@ def edit_publishing(request):
 
 
 # 删除出版社
-def delete_publishing(request):
+def delete_publishing(request,delete_id):
     # 1.获取要删除出版社的id
-    delete_id = request.GET.get('id')
+    # delete_id = request.GET.get('id')
     # 2.去数据库删除该id
     Publishing.objects.get(id=delete_id).delete()
     # 3.跳转到publishing_list页面
-    return redirect('/publishing_list/')
+    # return redirect('/publishing_list/')
+    return redirect(reverse('publishing_list'))
 
 
 # 展示书籍列表
@@ -155,4 +158,5 @@ class AddPublishing(View):
         print('post')
         publishing_name = request.POST.get('publishingName')
         Publishing.objects.create(name=publishing_name)
-        return redirect('/publishing_list/')
+        # return redirect('/publishing_list/')
+        return redirect(reverse('publishing_list'))
