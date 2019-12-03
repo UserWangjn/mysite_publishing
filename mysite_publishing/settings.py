@@ -134,7 +134,7 @@ USE_TZ = True
 #     os.path.join(BASE_DIR,'static'),
 # ]
 
-# 静态文件相关
+# 静态文件相关    别名
 STATIC_URL = '/static/'
 # 静态文件的实际存放目录
 STATICFILES_DIRS = [
