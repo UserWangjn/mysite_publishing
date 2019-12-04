@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'mysite_publishing.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysite_publishing',
+        'NAME': 'publishing',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
