@@ -22,7 +22,8 @@
                 </div><!-- /.col-lg-6 -->
                 <!--输入框结束-->
                 <!--添加按钮开始-->
-                <a href="/add_publishing/" class="btn btn-success pull-right">添加出版社</a>
+{#                <a href="/add_publishing/" class="btn btn-success pull-right">添加出版社</a>#}
+                <a href="{% url 'add_publishing' %}" class="btn btn-success pull-right">添加出版社</a>
                 <!--添加按钮结束-->
             </div>
 
@@ -44,7 +45,10 @@
                         <td>{{ i.name }}</td>
                         <td>
                             <a class="btn btn-info" href="/edit_publishing/?id={{ i.id }}">编辑</a>
-                            <a class="btn btn-danger" href="/delete_publishing/{{ i.id }}">删除</a>
+{#                            <a class="btn btn-danger" href="/delete_publishing/{{ i.id }}">删除</a>#}
+{#                            <p>{% url 'delete_publishing' i.id %}</p>#}
+{#                            <a class="btn btn-danger" href="/delete_publishing/{{ i.id }}">删除</a>#}
+                            <a class="btn btn-danger" href="{% url 'delete_publishing' i.id %}">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
