@@ -47,7 +47,7 @@
                         <td>{{ book.publishing.name }}</td>
                         <td>
                             <a class="btn btn-info" href="/edit_book/?id={{ book.id }}">编辑</a>
-                            <a class="btn btn-danger" href="/delete_book/?id={{ book.id }}">删除</a>
+                            <a class="btn btn-danger" href="{% url 'delete' 'book' book.id %}">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
