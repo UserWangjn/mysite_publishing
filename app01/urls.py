@@ -10,6 +10,7 @@ urlpatterns = [
     re_path(r'^add_publishing/$', views.AddPublishing.as_view(),name='add_publishing'),
     re_path(r'^edit_publishing/', views.edit_publishing),
     url(r'delete_(?P<table>publishing|book|author)/(?P<delete_id>\d+)$',views.delete,name='delete'),
+    # <a class="btn btn-danger" href="/app01/delete_publishing/14">删除</a>
     # url(r'^delete_publishing/(?P<delete_id>\d+)$', views.delete_publishing,name='delete_publishing'),  # (?P<delete_id>\d+)命名分组
     # url(r'^delete_publishing/(\d+)$', views.delete_publishing),  # # (\d+)分组
     url(r'^book/$',views.book_list,name='book_list'),
